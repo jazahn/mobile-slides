@@ -1,0 +1,62 @@
+<!DOCTYPE html>  
+<html>      
+    <head>      
+        <title>Sample Page</title>           
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+				<style>
+				#page1 {
+					background-color: blue;
+				}
+				#page2 {
+					background-color: red;
+				}
+				</style>   
+				 
+        <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js"></script>        
+        <script type="text/javascript" src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script> 
+				<script>
+				$(document).ready(function() {
+				    $("body").on('swipeleft', function() {
+				        $.mobile.changePage("#page2", {transition: 'slide'});
+				    });
+				    $("body").on('swiperight', function() {
+				        $.mobile.changePage("#page1", {transition: 'slide', reverse: true});
+				    });
+				});
+					
+				</script>
+    </head>   
+    <body>              
+        <div data-role="page" id="page1">      
+            <div data-role="header">         
+                <h1>
+                    Page 1
+                </h1>     
+            </div><!-- /header -->      
+            
+            <div data-role="content">
+                <p>This is page 1!</p>
+            </div><!-- /content -->      
+            
+            <div data-role="footer">              
+            </div> 
+        </div><!-- /page -->      
+        
+        <div data-role="page" id="page2">         
+            <div data-role="header">    
+               <h1>
+                  Page 2
+                </h1>     
+            </div><!-- /header -->         
+            
+            <div data-role="content">  
+                <p>Hooray for page 2!</p>
+            </div><!-- /content -->         
+            
+            <div data-role="footer">         
+            </div><!-- /fotoer -->     
+            
+        </div><!-- /page --> 
+
+    </body>
+</html>

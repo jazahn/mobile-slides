@@ -83,8 +83,17 @@ URL: https://code.google.com/p/io-2012-slides
 						<li>No admin functions</li>
 					</ul>
 				</li>
-				<li>Same Content, Less Filler</li>
-				<li>APIs</li>
+				<li>Same Content, Less Filler
+					<ul>
+						<li>Avoid duplication</li>
+					</ul>
+				</li>
+				<li>APIs
+					<ul>
+						<li>Again with the duplication</li>
+						<li>Template</li>
+					</ul>
+				</li>
 			</ul>
 		</article>
 	</slide>
@@ -96,7 +105,6 @@ URL: https://code.google.com/p/io-2012-slides
 		<article>
 			<ul class="build">
 				<li>What does a viewport do?</li>
-				<li>What happens if it's not set?</li>
 				<li>Most basic setting
 					<ul>
 						<li>
@@ -106,6 +114,7 @@ URL: https://code.google.com/p/io-2012-slides
 						</li>
 					</ul>
 				</li>
+				<li>What happens if it's not set?</li>
 			</ul>
 		</article>
 	</slide>
@@ -122,19 +131,17 @@ URL: https://code.google.com/p/io-2012-slides
 
 	<slide>
 		<hgroup>
-			<h2>Swipe!</h2>
+			<h2>Swipe</h2>
 		</hgroup>
 		<article>
 			<ul>
 				<li>jQuery Mobile: swipeleft and swiperight</li>
 				<li>swipe left to go right, swipe right to go left</li>
-			<pre class="prettyprint" data-lang="javascript">
-&lt;script type='text/javascript'&gt;
-	// swipe to the left
-	$(element).on('swipeleft', function(){
-		alert("swiped to the left")
-	})
-&lt;/script&gt;
+<pre class="prettyprint" data-lang="javascript">
+    // swipe to the left
+    $(element).on('swipeleft', function(){
+        alert("swiped to the left")
+    })
 </pre>
 		</article>
 	</slide>
@@ -147,17 +154,72 @@ URL: https://code.google.com/p/io-2012-slides
 			<ul>
 				<li>What does a swipe mean if there's no transition associated with it?</li>
 				<li>Transions are essential for good user experience.</li>
+			</ul>
 			<pre class="prettyprint" data-lang="javascript">
-&lt;script type='text/javascript'&gt;
-	$(element).on('swipeleft', function(){
-		$.mobile.changePage(url, {transition: ‘slide’});
-		// $.mobile.changePage(url, {transition: ‘slide’, reverse: true});
-	})
-&lt;/script&gt;
+
+$(element).on('swipeleft', function(){
+    $.mobile.changePage(url, {transition: ‘slide’});
+    // $.mobile.changePage(url, {transition: ‘slide’, reverse: true});
+})
+
 </pre>
 		</article>
 	</slide>
 	
+	<slide>
+		<hgroup>
+			<h2>Pre-fetching</h2>
+		</hgroup>
+		<article>
+			<ul>
+				<li>What does a transition mean if it's a poor transition?</li>
+				<li>Pre-fetching is essential for a good user experience!</li>
+				<li>2 ways to declare it
+					<ul>
+						<li>Within the <code>&lt;a&gt;</code>
+<pre class="prettyprint" data-lang="html">
+&lt;a href="prefetchThisPage.html" data-prefetch&gt; ... &lt;/a&gt;
+</pre>
+						</li>
+						<li>Within the js 
+<pre class="prettyprint" data-lang="javascript">
+$.mobile.loadPage( pageUrl, { showLoadMsg: false } );
+</pre>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</article>
+	</slide>
+
+	<slide>
+		<hgroup>
+			<h2>All Together Now!</h2>
+		</hgroup>
+		<article>
+			<ul>
+				<li>Swipe a transition to a pre-fetched page.</li>
+				<li>
+<pre class="prettyprint" data-lang="javascript">
+
+  // pre-fetch the page onload
+  $(document).ready(function(){
+    $.mobile.loadPage( nextUrl, { showLoadMsg: false } );
+    // on swipeleft, progress to next url
+    $(element).on('swipeleft', function(){
+      $.mobile.changePage(nextUrl, {transition: 'slide'});
+    })
+  });
+
+</pre>
+				</li>
+				<li>
+					<a href="demo1.html" alt="swipe demo">Swipe Demo</a>
+				</li>
+			</ul>
+		</article>
+	</slide>
+
 	<slide>
 		<hgroup>
 			<h2>Code Slide (Smaller Font)</h2>

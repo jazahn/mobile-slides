@@ -21,7 +21,7 @@ var SLIDE_CONFIG = {
   presenters: [{
     name: 'JaZahn Clevenger',
     company: 'Sr Software Engineer',
-    gplus: 'http://plus.google.com/1234567890',
+    //gplus: 'http://plus.google.com/1234567890',
     twitter: '@jazahn',
     www: 'http://blogs.law.harvard.edu/acts',
     github: 'http://github.com/jazahn'

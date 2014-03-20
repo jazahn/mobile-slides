@@ -242,7 +242,7 @@ $.mobile.loadPage( pageUrl, { showLoadMsg: false } );
 		<article>
 			<ul>
 				<li>All we do is lists sometimes</li>
-				<li>jQuery Mobile gives some nice styles for lists<br>
+				<li>jQuery Mobile gives some nice styles for lists
 <pre class="prettyprint" data-lang="html">
 &lt;ul data-role="listview">
   &lt;li&gt;&lt;a href="acura.html"&gt;Acura&lt;/a&gt;&lt;/li&gt;
@@ -261,15 +261,21 @@ $.mobile.loadPage( pageUrl, { showLoadMsg: false } );
 			<h2>Everyone Loves Slidey Menus</h2>
 		</hgroup>
 		<article>
+			<p><a href="demo2.html">Slidey Menu Demo</a></p>
 			<ul>
 				<li>Set z-index of the menu to be behind the content
 <pre class="prettyprint" data-lang="css">
-
+#pagebody { position: relative; z-index: 99999; }
+#navmenu { display: block; position: fixed; width: 300px; left: 0px; top: 0px; z-index: 0;  }
 </pre>
 				</li>
 				<li>Move the content with a jQuery.animate
 <pre class="prettyprint" data-lang="javascript">
-
+function openit() { 
+    pagebody.animate({
+       left: "290px"
+    }, { duration: 300, queue: false });
+}
 </pre>
 				</li>
 			</ul>
@@ -289,9 +295,6 @@ $.mobile.loadPage( pageUrl, { showLoadMsg: false } );
 		</hgroup>
 		<article>
 			<ul>
-				<li>
-					The network
-				</li>
 				<li>
 					Latency vs Bandwidth<br>
 					<img src="images/bandwith-vs-latency.png" alt="image of 2 streams from client to server. one stream is thin, signifying low bandwith. one stream is thick, signifying high bandwith. The point of it is that regardless of bandwith, latency is the same"/>

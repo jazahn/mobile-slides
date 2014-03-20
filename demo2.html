@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>demo 2</title>
+	<meta name="author" content="Jake Rocheleau">
+	<meta name="description" content="Small demo for a Sparrow-like jQuery mobile navigation menu. This is built using HTML5/CSS3 and should run properly in Mobile Safari + Android web browsers.">
+    <meta name="keywords" content="tutorial, jquery, javascript, demo, sparrow, email, app, navigation, menu, sidebar, swipe, animated, design, coding">
+  <link rel="shortcut icon" href="images/favicon.ico">
+	<link rel="icon" href="images/favicon.ico">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<style>
+	
+	* { margin: 0; padding: 0; }
+
+	body { background: #181c1f; font-family: "Trebuchet MS", Arial, Tahoma, sans-serif; font-size: 62.5%; line-height: 1; }
+
+	a { -webkit-tap-highlight-color: rgba(0,0,0,0); -webkit-touch-callout: none; }
+
+	img { border: 0; }
+	img.photo { padding: 2px; background: #888; border: 1px solid #cecece; border-bottom-color: #aaa; border-right-color: #aaa; float: right; margin-left: 20px; margin-right: 11px; }
+
+	#w { position: relative; overflow-x: hidden; overflow-y: hidden; }
+
+	/** @group core body **/
+	#w #pagebody { position: relative; left: 0; max-width: 640px; min-width: 320px; z-index: 99999; }
+
+	#w #navmenu { background: #475566; height: 100%; display: block; position: fixed; width: 300px; left: 0px; top: 0px; z-index: 0;  }
+
+	/** @group header **/
+	#w #pagebody header#toolbarnav { display: block; position: fixed; left: 0px; top: 0px; z-index: 9999; background: #0b1851 url('img/tabbar-solid-bg.png') top left no-repeat; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; border-bottom-right-radius: 0; -moz-border-radius-bottomright: 0; -webkit-border-bottom-right-radius: 0; border-bottom-left-radius: 0; -moz-border-radius-bottomleft: 0; -webkit-border-bottom-left-radius: 0; height: 44px; width: 100%; max-width: 640px; }
+
+	#w #pagebody header#toolbarnav h1 { text-align: center; padding-top: 10px; padding-right: 40px; color: #e6e8f2; font-weight: bold; font-size: 2.1em; text-shadow: 1px 1px 0px #313131; }
+
+
+	#w #pagebody header #menu-btn { display: block; float: left; width: 53px; height: 30px; background: url('images/nav-btn.png') no-repeat; margin-top: 6px; margin-left: 8px;}
+
+	#w #pagebody #content { display: block; background: #fff; padding: 5px 12px; margin-top: 40px; min-height: 550px; height: 100%; z-index: 9999; }
+
+	#w #pagebody #content h2 { border-bottom: 1px solid #ddd; border-top: 1px solid #ddd; color: #181818;
+	font-family: "Droid Serif", Georgia, serif; font-size: 2.6em; line-height: 1.8em; font-weight: 500; margin-top: 25px; margin-bottom: 25px; padding: 12px 0; text-align: center; }
+	#w #pagebody #content h3 { font-family: "Calibri", Verdana, Arial, sans-serif; font-weight: 700; font-size: 1.8em; line-height: 1.75em; text-transform: capitalize; margin-bottom: 5px; color: #222; }
+	#w #pagebody #content p { font-size: 1.4em; line-height: 1.6em; margin-bottom: 15px; color: #444; }
+
+	#w #pagebody #content a { color: #78a5ce; }
+	#w #pagebody #content a:hover { color: #678eb2; }
+
+	/** @group nav menu **/
+	#w #navmenu header { display: block; background: #303a44; height: 44px; }
+
+	#w #navmenu header h1 { text-align: center; padding-top: 10px; color: #e6e8f2; font-weight: bold; font-size: 2.1em; text-shadow: 1px 1px 0px #313131; }
+
+	#w #navmenu ul { list-style: none; background: #475566; height: 100%; }
+
+	#w #navmenu ul li { display: block; }
+	#w #navmenu ul li a { position: relative; display: block; border-bottom: 1px solid #303c4a; padding: 14px 11px; font-weight: bold; color: #f0f0f0; text-shadow: -1px -1px 1px #222; font-size: 1.6em; text-decoration: none; }
+
+	#w #navmenu ul li a:hover { color: #cad0e6; text-decoration: none; }
+
+	#w #navmenu ul li a::after {
+		content: '';
+		display: block;
+		width: 6px;
+		height: 6px;
+		border-right: 3px solid #d0d0d8;
+		border-top: 3px solid #d0d0d8;
+		position: absolute;
+		right: 30px;
+		top: 45%;
+		-webkit-transform: rotate(45deg);
+		-moz-transform: rotate(45deg);
+		-o-transform: rotate(45deg);
+		transform: rotate(45deg);
+	}
+
+	#w #navmenu ul li a:hover::after { border-color: #cad0e6; }
+
+	/** @group misc **/
+	.blue { color: #1c609f !important; font-weight: bold; }
+
+	/** @group clearfix **/
+	.clearfix:after { content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0; }
+	.clearfix { display: inline-block; }
+ 
+	html[xmlns] .clearfix { display: block; }
+	* html .clearfix { height: 1%; }
+	</style>
+
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script>
+	$(document).ready(function(){
+		var pagebody = $("#pagebody");
+		var themenu  = $("#navmenu");
+		var topbar   = $("#toolbarnav");
+		var content  = $("#content");
+		var viewport = {
+	    	width  : $(window).width(),
+	    	height : $(window).height()
+		};
+		// retrieve variables as 
+		// viewport.width / viewport.height
+	
+		function openme() { 
+			    topbar.animate({
+			       left: "290px"
+			    }, { duration: 300, queue: false });
+			    pagebody.animate({
+			       left: "290px"
+			    }, { duration: 300, queue: false });
+		}
+	
+		function closeme() {
+			var closeme = $(function() {
+		    	topbar.animate({
+		            left: "0px"
+		    	}, { duration: 180, queue: false });
+		    	pagebody.animate({
+		            left: "0px"
+		    	}, { duration: 180, queue: false });
+			});
+		}
+
+		// checking whether to open or close nav menu
+		$("#menu-btn").live("click", function(e){
+			e.preventDefault();
+			var leftval = pagebody.css('left');
+		
+			if(leftval == "0px") {
+				openme();
+			}
+			else { 
+				closeme(); 
+			}
+		});
+	
+		// loading page content for navigation
+		$("a.navlink").live("click", function(e){
+			e.preventDefault();
+			var linkurl     = $(this).attr("href");
+			var linkhtmlurl = linkurl.substring(1, linkurl.length);
+		
+			var imgloader   = '<center style="margin-top: 30px;"><img src="img/preloader.gif" alt="loading..." /></center>';
+		
+			closeme();
+		
+			topbar.css("top", "0px");
+			window.scrollTo(0, 1);
+		
+			content.html(imgloader);
+		
+			setTimeout(function() { content.load(linkhtmlurl, function() { /* no callback */ }) }, 1200);
+		});
+	});
+	</script>
+</head>
+
+<body>
+
+	<div id="w">
+		
+		<div id="pagebody">
+			<header id="toolbarnav">
+				<a href="#navmenu" id="menu-btn"></a>
+			
+				<h1>Demo 2</h1>
+			</header>
+			
+			<section id="content" class="clearfix">
+				
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lorem sapien, auctor placerat varius sed, aliquam et nibh. Quisque posuere erat nec tortor vestibulum id dignissim quam ornare. Suspendisse sapien ante, pellentesque non interdum ac, feugiat at eros. Morbi lacus augue, blandit ac porta a, rutrum quis tellus. Nam ut velit lorem, sit amet placerat lorem.</p>
+				
+				<p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam convallis lacinia dapibus. Sed nunc enim, ultrices nec suscipit ac, malesuada pharetra diam. Etiam massa orci, pellentesque nec lacinia eu, vulputate non est. Donec faucibus, tellus eu ultrices lobortis, leo nisl iaculis elit, id dictum arcu massa in nibh. Nulla auctor vehicula rutrum. Vivamus mi mauris, molestie sit amet placerat ac, tempor vitae nisi. Fusce pharetra eleifend aliquam. Cras ultricies orci sit amet ligula tempor pulvinar.</p>
+				
+				<p>Vivamus consectetur nulla vel neque accumsan bibendum lacinia nibh venenatis. Morbi placerat tempor nunc, eu congue metus pellentesque vitae.</p>
+
+				<p>Maecenas lacinia commodo venenatis. Sed nec mauris sapien. Donec eget justo sapien, id elementum magna. Integer et orci quis urna tempus eleifend eget eu nulla. Quisque interdum porttitor tincidunt. Nulla ornare dolor elit, eu adipiscing felis. Nulla viverra blandit bibendum. Mauris non tellus lacus.</p>
+				
+				<p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam convallis lacinia dapibus. Sed nunc enim, ultrices nec suscipit ac, malesuada pharetra diam. Etiam massa orci, pellentesque nec lacinia eu, vulputate non est. Donec faucibus, tellus eu ultrices lobortis, leo nisl iaculis elit, id dictum arcu massa in nibh.</p>
+				
+				<p>Nulla auctor vehicula rutrum. Vivamus mi mauris, molestie sit amet placerat ac, tempor vitae nisi. Fusce pharetra eleifend aliquam. Cras ultricies orci sit amet ligula tempor pulvinar. Vivamus consectetur nulla vel neque accumsan bibendum lacinia nibh venenatis. Morbi placerat tempor nunc, eu congue metus pellentesque vitae.</p>
+
+				<p>Maecenas lacinia commodo venenatis. Sed nec mauris sapien. Donec eget justo sapien, id elementum magna. Integer et orci quis urna tempus eleifend eget eu nulla. Quisque interdum porttitor tincidunt. Nulla ornare dolor elit, eu adipiscing felis. Nulla viverra blandit bibendum. Mauris non tellus lacus.</p>
+				
+			</section>
+		</div>
+		
+		<div id="navmenu">
+			<header>
+				<h1>Menu Links</h1>
+			</header>
+			
+				<ul>
+					<li><a href="#homepage.html" class="navlink">Home</a></li>
+					<li><a href="#page1.html" class="navlink">Page 1</a></li>
+					<li><a href="#page2.html" class="navlink">Page 2</a></li>
+					<li><a href="#about.html" class="navlink">About Us</a></li>
+					<li><a href="#contacts.html" class="navlink">Contacts</a></li>
+				</ul>
+		</div>
+	</div>
+</body>
+</html>
+

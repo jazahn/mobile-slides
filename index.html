@@ -168,7 +168,7 @@ URL: https://code.google.com/p/io-2012-slides
 		<article>
 			<ul>
 				<li>What does a swipe mean if there's no transition associated with it?</li>
-				<li>Transions are essential for good user experience.</li>
+				<li>Transitions are essential for good user experience.</li>
 			</ul>
 			<pre class="prettyprint" data-lang="javascript">
 
@@ -362,11 +362,21 @@ require(['jquery', 'jquery-mobile'], function($){
 				<li>
 					Appcache Manifest
 					<ul>
-						<li></li>
+						<li>
+<pre class="prettyprint" data-lang="html">
+&lt;html manifest="myManifest.appcache"&gt;
+</pre>
+						</li>
+						<li> (set to <code>text/cache-manifest</code>)
+<pre class="prettyprint" data-lang="manifest">
+CACHE MANIFEST 
+/styles.css
+/scripts.js
+</pre>
 					</ul>
 				</li>
 				<li>
-					localStorage object
+					<code>window.localStorage</code> object
 					<ul>
 						<li>The new Cookie!</li>
 					</ul>

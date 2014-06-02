@@ -1,0 +1,73 @@
+<!DOCTYPE html>  
+<html>	  
+	<head>	  
+		<meta name="viewport" content="width=device-width, initial-scale=1x">
+		<title>Sample Page</title>		   
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+				<style>
+				#page1 {
+					background-color: blue;
+					color: white;
+				}
+				#page2 {
+					background-color: white;
+					color: black;
+				}
+				</style>   
+				 
+		<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js"></script>		
+		<script type="text/javascript" src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script> 
+				<script>
+				$(document).ready(function() {
+					$("body").on('swipeleft', function() {
+						$.mobile.changePage("#page2", {transition: 'slide'});
+					});
+					$("body").on('swiperight', function() {
+						$.mobile.changePage("#page1", {transition: 'slide', reverse: true});
+					});
+				});
+					
+				</script>
+	</head>   
+	<body>			  
+		<div data-role="page" id="page1">	  
+			<div data-role="header">		 
+				<h1>
+					Page 1
+				</h1>	 
+			</div><!-- /header -->	  
+			
+			<div data-role="content">
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pellentesque urna, id lobortis risus. Nunc in faucibus dolor, at facilisis sem. Praesent eget turpis blandit, luctus dui sodales, adipiscing nisi. Pellentesque sed ligula odio. Aenean congue eu nisi at tempus. Donec ultricies lacus vitae ligula consectetur auctor. Proin mollis lorem sed vehicula lacinia. Nulla nec massa posuere erat egestas vehicula. Maecenas congue mauris lectus, quis venenatis risus feugiat eget. Nunc fringilla metus risus, id interdum sapien rutrum a. Quisque porttitor accumsan metus, ac lacinia ante pretium in. Nunc tempus ligula eget condimentum adipiscing. Donec aliquam tortor nulla, non molestie justo ultrices ac. Nulla vitae convallis nibh, in posuere nunc.
+
+Pellentesque in iaculis odio, et aliquam metus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris suscipit non erat eu facilisis. Vivamus hendrerit metus vel justo ornare rutrum. Nulla lacinia enim eu hendrerit rhoncus. Duis egestas nec tellus vulputate mollis. Donec aliquam eleifend magna ac pretium. Mauris quis ipsum sit amet justo congue pulvinar. Duis diam eros, sollicitudin venenatis vestibulum a, gravida vel magna. Aliquam id mollis urna. Sed interdum orci semper ipsum rhoncus, vitae varius justo egestas. Integer laoreet adipiscing egestas. Aliquam at tortor dui. Nam lacinia eu massa at venenatis. Praesent arcu dolor, blandit non malesuada a, scelerisque in sapien. Nullam metus justo, blandit vel scelerisque sed, rutrum a turpis.
+
+Curabitur in libero sed felis sagittis consequat. Morbi eu ullamcorper orci. Aenean ornare magna vel sem sagittis tempor. In hac habitasse platea dictumst. Phasellus diam odio, semper eget sapien sed, condimentum bibendum tortor. Pellentesque vitae felis scelerisque, varius massa sed, cursus nisl. In quis augue nisl. Proin fermentum ante ut posuere tristique. Aenean vitae massa vel lectus tristique bibendum nec hendrerit ligula.
+
+Vestibulum lacus diam, fermentum eu posuere sed, accumsan eu lorem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam suscipit vulputate mi, vitae vestibulum velit ultricies vel. Nunc vel magna sem. Integer quis bibendum elit. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer pellentesque scelerisque pretium. Sed accumsan tortor a tellus egestas ultricies. Phasellus vitae lacus nec neque adipiscing sodales porttitor non lorem. In vehicula, eros et ultricies commodo, velit velit aliquet odio, eu lacinia eros augue non ipsum. Pellentesque rhoncus orci justo, non cursus lacus pretium sed.
+
+Morbi imperdiet ornare quam eget pharetra. Maecenas pulvinar pellentesque venenatis. Vestibulum ut volutpat risus. In malesuada pellentesque sollicitudin. Aenean condimentum, dui in sagittis tincidunt, tellus lectus lobortis tortor, at cursus nisi sapien eget sapien. Aliquam nec malesuada lorem, vel cursus sem. Ut a mattis urna, vel fermentum sapien. Phasellus porttitor ligula sit amet dui gravida, ac dictum nunc imperdiet.</p>
+			</div><!-- /content -->	  
+			
+			<div data-role="footer">			  
+			</div> 
+		</div><!-- /page -->	  
+		
+		<div data-role="page" id="page2">		 
+			<div data-role="header">	
+			   <h1>
+				  Page 2
+				</h1>	 
+			</div><!-- /header -->		 
+			
+			<div data-role="content">  
+				<p>Hooray for page 2!</p>
+			</div><!-- /content -->		 
+			
+			<div data-role="footer">		 
+			</div><!-- /fotoer -->	 
+			
+		</div><!-- /page --> 
+
+	</body>
+</html>

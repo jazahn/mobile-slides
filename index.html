@@ -122,7 +122,10 @@ URL: https://code.google.com/p/io-2012-slides
 						</li>
 					</ul>
 				</li>
-				<li>What happens if it's not set?</li>
+				<li>What happens if it's not set?<br><br>
+					<img src="images/noviewport.png" alt="lorem ipsum text, very small print for a mobile device"/>
+					<img src="images/viewport.png" alt="lorem ipsum text, text that is large enough to read without zooming"/>
+				</li>
 			</ul>
 		</article>
 	</slide>
@@ -278,6 +281,31 @@ function openit() {
 }
 </pre>
 				</li>
+			</ul>
+		</article>
+	</slide>
+
+	<slide>
+		<aside class="note">
+			<section>
+				<ul>
+					<li>prototypes, not production-ready</li>
+					<li>overall, this creates issues for mobile, which is ironic</li>
+					<li>The problem is the styles are added, post-load, by javascript</li>
+					<li>Since I'm talking about optimization for mobile, this is necessary to discuss</li>
+					<li>The solution is to break out the styles of everything that is visible on the page when it loads and manually add the classes that are added post-load, it's bitchy, but recommended by jQuery Mobile</li>
+					<li>More details found in my workshop</li>
+				</ul>
+			</section>
+		</aside>
+		<hgroup>
+			<h2>jQuery Mobile</h2>
+		</hgroup>
+		<article>
+			<ul class="build">
+				<li>This lib is designed for prototypes</li>
+				<li>The problem</li>
+				<li>The solution</li>
 			</ul>
 		</article>
 	</slide>
